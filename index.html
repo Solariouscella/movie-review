@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+
+
+        body {
+          font-family: Arial, sans-serif;
+          background: #161616;
+          color: white;
+          margin: 0;
+        }
+    
+        header {
+          text-align: center;
+          padding: 20px;
+          background: #282c34;
+          position: relative;
+        }
+    
+        h1 {
+          margin: 0;
+          font-size: 2em;
+        }
+    
+        p {
+          margin: 10px 0;
+        }
+    
+        #clock {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          font-size: 18px;
+        }
+    
+        .cat {
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
+          height: 100px;
+          width: 113px;
+        }
+    
+        .ear {
+          position: absolute;
+          top: -30%;
+          height: 60%;
+          width: 25%;
+          background: white;
+        }
+    
+        .ear::before,
+        .ear::after {
+          content: '';
+          position: absolute;
+          bottom: 24%;
+          height: 10%;
+          width: 5%;
+          border-radius: 50%;
+          background: #161616;
+        }
+    
+        .ear::after {
+          transform-origin: 50% 100%;
+        }
+    
+        .ear--left {
+          left: -7%;
+          border-radius: 70% 30% 0% 0% / 100% 100% 0% 0%;
+          transform: rotate(-15deg);
+        }
+    
+        .ear--left::before,
+        .ear--left::after {
+          right: 10%;
+        }
+    
+        .ear--left::after {
+          transform: rotate(-45deg);
+        }
+    
+        .ear--right {
+          right: -7%;
+          border-radius: 30% 70% 0% 0% / 100% 100% 0% 0%;
+          transform: rotate(15deg);
+        }
+    
+        .ear--right::before,
+        .ear--right::after {
+          left: 10%;
+        }
+    
+        .ear--right::after {
+          transform: rotate(45deg);
+        }
+    
+        .face {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background: #161616;
+          border-radius: 50%;
+        }
+    
+        .eye {
+          position: absolute;
+          top: 35%;
+          height: 30%;
+          width: 31%;
+          background: white;
+          border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+    
+        .eye::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 0;
+          width: 100%;
+          border-radius: 0 0 50% 50% / 0 0 40% 40%;
+          background: #161616;
+          animation: blink 4s infinite ease-in;
+        }
+    
+        @keyframes blink {
+          0% {
+            height: 0;
+          }
+    
+          90% {
+            height: 0;
+          }
+    
+          92.5% {
+            height: 100%;
+          }
+    
+          95% {
+            height: 0;
+          }
+    
+          97.5% {
+            height: 100%;
+          }
+    
+          100% {
+            height: 0;
+          }
+        }
+    
+        .eye::before {
+          content: '';
+          position: absolute;
+          top: 60%;
+          height: 10%;
+          width: 15%;
+          background: white;
+          border-radius: 50%;
+        }
+    
+        .eye--left {
+          left: 0;
+          .eye::before {
+            right: -5%;
+          }
+        }
+    
+        .eye--right {
+          right: 0;
+          .eye::before {
+            left: -5%;
+          }
+        }
+    
+        .eye-pupil {
+          position: absolute;
+          top: 25%;
+          height: 50%;
+          width: 20%;
+          background: #161616;
+          border-radius: 50%;
+          animation: look-around 4s infinite;
+        }
+    
+        .eye-pupil::after {
+          content: '';
+          position: absolute;
+          top: 30%;
+          right: -5%;
+          height: 20%;
+          width: 35%;
+          border-radius: 50%;
+          background: white;
+        }
+    
+        .eye--left .eye-pupil {
+          right: 30%;
+        }
+    
+        .eye--right .eye-pupil {
+          left: 30%;
+        }
+    
+        .muzzle {
+          position: absolute;
+          top: 60%;
+          left: 50%;
+          height: 6%;
+          width: 10%;
+          background: white;
+          transform: translateX(-50%);
+          border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+        }
+
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+    }
+
+    select,
+    textarea,
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    #submit {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #split,
+    #split-1 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .narrow-textarea {
+      width: 300px;
+  }
+  #age {
+    width: 70px;
+}
+#education
+{
+
+  width: 210px;
+ 
+}
+
+
+    #other_movies {
+      grid-column: span 2; /* Make the submit button span two columns */
+    }
+
+    input[type="text"] {
+      width: 50%; /* Set the width to 100% */
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+  </style>
+  <script>
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+      var timeString = hours + ':' + minutes + ':' + seconds;
+
+      document.getElementById('clock').innerText = timeString;
+
+      setTimeout(updateClock, 1000); // Update every 1000 milliseconds (1 second)
+    }
+
+    window.onload = function () {
+      updateClock(); // Initial call to display clock
+    };
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.querySelector('form');
+      var resultsDiv = document.getElementById('results');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var formData = new FormData(form);
+        var formDataObject = {};
+        formData.forEach(function (value, key) {
+          formDataObject[key] = value;
+        });
+
+        // Display the form data in JSON format
+        resultsDiv.innerText = JSON.stringify(formDataObject, null, 2);
+      });
+    });
+
+
+  </script>
+</head>
+
+<body>
+  <header>
+
+  <h1 style="color: aliceblue;">Movies Review</h1>
+  <p style="color: azure;">Share your thoughts about movies with us!</p>
+
+  <div id="clock" style="text-align: left; padding-left: 20px; font-size: 18px; color: azure;"></div>
+  <div class="cat">
+    <div class="ear ear--left"></div>
+    <div class="ear ear--right"></div>
+    <div class="face">
+      <div class="eye eye--left">
+        <div class="eye-pupil"></div>
+      </div>
+      <div class="eye eye--right">
+        <div class="eye-pupil"></div>      <div class="muzzle"></div>
+
+      </div>
+      <div class="muzzle"></div>
+    </div>
+  </div>
+</header>
+<main>
+    <form>
+      <label for="Name">1. What is your Name?</label>
+<input type="text" id="Name" name="Name" style="width: fit-content;" required pattern="[A-Za-z]+">
+<br>
+
+
+        <label for="gender">2. What is your gender?</label>
+        <label for="male">
+            <input type="radio" id="male" name="gender" value="male">
+            Male
+        </label>
+        <label for="female">
+            <input type="radio" id="female" name="gender" value="female">
+            Female
+        </label>
+        <label for="other">
+            <input type="radio" id="other" name="gender" value="other">
+            Other
+        </label>
+        <br>
+        <label for="age">3. What is your age?</label>
+        <input type="number" class="narrow-input-number" id="age" name="age" min="1" max="100">
+        <br>
+        <label for="education">4. What is your highest level of education?</label>
+        <select id="education" name="education">
+            <option value="highschool">High school</option>
+            <option value="bachelors">Bachelor's degree</option>
+            <option value="professional">Professional degree</option>
+            <option value="other">Other</option>
+        </select>
+        <br>
+
+        <label for="email">5. Email:</label>
+        <input type="email" id="email" style="width: fit-content;" name="email" required>
+        <br>  
+        <section id="split">
+        <label for="favorite_movies">6. What are your favorite types of movies? Select up to 3.</label>
+        <br>
+        <label for="action">
+            <input type="checkbox" id="action" name="favorite_movies" value="action">
+            Action and adventure
+        </label>
+        <label for="animation">
+            <input type="checkbox" id="animation" name="favorite_movies" value="animation">
+            Animation
+        </label>
+        <label for="cordy">
+            <input type="checkbox" id="cordy" name="favorite_movies" value="cordy">
+            Cordy
+        </label>
+        <label for="hal">
+            <input type="checkbox" id="hal" name="favorite_movies" value="hal">
+            Hal
+        </label>
+        <label for="scifi">
+            <input type="checkbox" id="scifi" name="favorite_movies" value="scifi">
+            Science fiction
+        </label><br>
+        <label for="other_movies">Other</label>
+        <input type="text" id="other_movies" name="other_movies">
+        <br>
+            </section>
+
+            <label for="MName">7. Movie name which you like  to review?</label>
+            <input type="text" id="MName" name="MName" style="width: fit-content;">
+            <br>
+        <label for="reason">8. What is the most important reason that you want to see a movie?</label>
+        <label for="trailer">
+            <input type="checkbox" id="trailer" name="reason" value="trailer">
+            Trailer
+        </label>
+        <label for="advertisers">
+            <input type="checkbox" id="advertisers" name="reason" value="advertisers">
+            Advertisers
+        </label>
+        <label for="corvet">
+            <input type="checkbox" id="corvet" name="reason" value="corvet">
+            Corvet
+        </label>
+        <label for="recommendation">
+            <input type="checkbox" id="recommendation" name="reason" value="recommendation">
+            Recommendation
+        </label>
+        <br>
+        <label for="watch_frequency">9. How often do you watch movies?</label>
+        <label for="extremely_often">
+            <input type="radio" id="extremely_often" name="watch_frequency" value="extremely_often">
+            Extremely often
+        </label>
+        <label for="moderately_often">
+            <input type="radio" id="moderately_often" name="watch_frequency" value="moderately_often">
+            Moderately often
+        </label>
+        <label for="not_at_all">
+            <input type="radio" id="not_at_all
+            #split1{
+        
+              
+            }" name="watch_frequency" value="not_at_all">
+            Not at all
+        </label>
+        <br>
+        <label for="important_element">10. What is the most important element for you in this movie?</label>
+        <label for="content">
+            <input type="radio" id="content" name="important_element" value="content">
+            Content
+        </label>
+        <label for="characterization">
+            <input type="radio" id="characterization" name="important_element" value="characterization">
+            Characterization
+        </label>
+        <label for="soundtrack">
+            <input type="radio" id="soundtrack" name="important_element" value="soundtrack">
+            Soundtrack
+        </label>
+        <br>
+        <label for="explanation">11. Please briefly explain why.</label>
+        <textarea id="explanation"  class="narrow-textarea" name="explanation" style="overflow: auto;" rows="4" cols="40"></textarea>
+        <br>
+        <label for="favorite_genre">12. What is your favorite movie genre?</label>
+        <label for="drama">
+            <input type="checkbox" id="drama" name="favorite_genre" value="drama">
+            Drama
+        </label>
+        <label for="horror">
+            <input type="checkbox" id="horror" name="favorite_genre" value="horror">
+            Horror
+        </label>
+        <label for="western">
+            <input type="checkbox" id="western" name="favorite_genre" value="western">
+            Western
+        </label>
+        <br>
+        <label for="favorite_movie">13. What is your favorite movie?</label>
+        <input type="text" id="favorite_movie" name="favorite_movie">
+        <br>        <section id="split-1">
+          <label for="watch_place">14. Place where you watched this movie?</label>
+          <br>
+          <label for="Home">
+              <input type="checkbox" id="Home" name="Theater" value="Home">
+              Home Theater Setup
+          </label>
+          <label for="Classic">
+              <input type="checkbox" id="Classic" name="Theater" value="Classic">
+              Classic Movie Theater
+          </label>
+          <label for="Outdoor">
+              <input type="checkbox" id="Outdoor" name="Theater" value="Outdoor">
+              Outdoor Movie Night
+          </label>
+          <label for="Art">
+              <input type="checkbox" id="Art" name="Theater" value="Art">
+              Art House Cinema
+          </label>
+       
+      
+              </section>
+
+              <label for="rating">15. Rate the movie (1-5):</label>
+              <select id="rating" name="rating" style="width: min-content;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <br>
+        <!-- You can continue adding more questions as needed -->
+        <input type="submit" id="submit" value="Submit">
+
+    
+      </form>
+    </main>
+    <footer>
+      <div id="results"></div>
+  </footer>
+</body>
+
+</html>
